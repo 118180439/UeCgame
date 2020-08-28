@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
 #include "ShooterCharacter.generated.h"
 
 UCLASS()
@@ -25,5 +26,19 @@ public:
 
 	// 输入绑定功能
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	// 前后移动绑定
+	void MoveForward(float value);
+
+	// 左右移动绑定
+	void MoveRight(float value);
+
+protected:
+	//创建相机 暴露并可编辑
+	UPROPERTY(EditAnywhere, Category = Camera)
+	UCameraComponent* Camera1P;
+	//创建第一人称模型 暴露并可编辑
+	UPROPERTY(EditAnywhere, Category = Mesh)
+	USkeletalMeshComponent* Mesh1P;
 
 };
